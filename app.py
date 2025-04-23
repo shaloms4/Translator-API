@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # <-- Add this
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
@@ -6,6 +7,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)  # <-- Allow CORS for all origins
 
 client = OpenAI(api_key=os.getenv("API_KEY"))
 
