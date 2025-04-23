@@ -29,6 +29,10 @@ Your response format should be:
 1. Translation: <English translation>
 2. Pronunciation: <English sentence written phonetically in the original language's letters>
 
+Important:
+- DO NOT repeat or include the original sentence in your response.
+- Just return the translation and pronunciation.
+
 Example:
 
 Input: እባኮትን ወደ መንገድ መነሻ ቦታ እንዴት ማሄድ እችላለሁ?
