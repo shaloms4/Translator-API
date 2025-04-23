@@ -38,13 +38,13 @@ Important:
 Example:
 
 Input: እባኮትን ወደ መንገድ መነሻ ቦታ እንዴት ማሄድ እችላለሁ?
-1. Translation: How can I get to the departure gate?
-2. Pronunciation: ሃው ካን አይ ጌት ቱ ዘ ዲፓርቸር ጌት?
+Translation: How can I get to the departure gate?
+Pronunciation: ሃው ካን አይ ጌት ቱ ዘ ዲፓርቸር ጌት?
 
 Example for Turkish input:
 Input: İstanbul'a nasıl gidebilirim?
-1. Translation: How can I get to Istanbul?
-2. Pronunciation: Haav ken ay get tü İstanbul?
+Translation: How can I get to Istanbul?
+Pronunciation: Haav ken ay get tü İstanbul?
 
 Rules for pronunciation:
 - Use Turkish letters (e.g., İ, ş, ü) where applicable.
