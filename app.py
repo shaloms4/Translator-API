@@ -35,6 +35,17 @@ Your response format should be:
 Important:
 - DO NOT repeat or include the original sentence in your response.
 - Just return the translation and pronunciation.
+
+Example:
+
+Input: እባኮትን ወደ መንገድ መነሻ ቦታ እንዴት ማሄድ እችላለሁ?
+Translation: How can I get to the departure gate?
+Pronunciation: ሃው ካን አይ ጌት ቱ ዘ ዲፓርቸር ጌት?
+
+Example for Turkish input:
+Input: İstanbul'a nasıl gidebilirim?
+Translation: How can I get to Istanbul?
+Pronunciation: Haav ken ay get tü İstanbul?
 """
 
         response = client.chat.completions.create(
