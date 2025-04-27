@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import os
 import json
+import base64
+from io import BytesIO
 
 load_dotenv()
 
@@ -48,6 +50,7 @@ Translation: How can I get to Istanbul?
 Pronunciation: Haav ken ay get tü İstanbul?
 """
 
+        # Get translation and pronunciation
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[
@@ -57,7 +60,7 @@ Pronunciation: Haav ken ay get tü İstanbul?
 
         reply = response.choices[0].message.content
 
-        # Simple parsing
+        # Parse the response
         translation = "Translation unavailable."
         pronunciation = "Pronunciation unavailable."
         
@@ -68,9 +71,22 @@ Pronunciation: Haav ken ay get tü İstanbul?
             elif line.startswith("2. Pronunciation:"):
                 pronunciation = line.replace("2. Pronunciation:", "").strip()
 
+        # Generate audio for the English translation
+        audio_stream = client.audio.speech.create(
+            model="tts-1",
+            voice="alloy",  # Choose a voice (e.g., alloy, echo, fable, etc.)
+            input=translation
+        )
+
+        # Read audio bytes and encode to base64
+        audio_bytes = audio_stream.read()
+        audio_base64 = base64.b64encode(audio_bytes).decode('utf-8')
+
+        # Prepare response
         parsed_response = {
             "translation": translation,
-            "pronunciation": pronunciation
+            "pronunciation": pronunciation,
+            "audio": audio_base64
         }
 
         return Response(
@@ -82,4 +98,4 @@ Pronunciation: Haav ken ay get tü İstanbul?
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=3000)
